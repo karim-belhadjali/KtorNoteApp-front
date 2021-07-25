@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.skydoves:colorpickerview:2.1.7@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/914e97e11d4b6c75eb8fb856156a806f/jetified-colorpickerview-2.1.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/914e97e11d4b6c75eb8fb856156a806f/jetified-colorpickerview-2.1.7/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/914e97e11d4b6c75eb8fb856156a806f/jetified-colorpickerview-2.1.7/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.skydoves/colorpickerview/2.1.7/2fadddecacaac44c10edd8b88757f33aba215d58/colorpickerview-2.1.7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.skydoves/colorpickerview/2.1.7/c5bfc1c902122567c2e145bf72f47067f155006e/colorpickerview-2.1.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
