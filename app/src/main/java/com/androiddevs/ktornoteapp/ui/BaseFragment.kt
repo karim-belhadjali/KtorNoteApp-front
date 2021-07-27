@@ -4,11 +4,10 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
-abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
+abstract class BaseFragment(layoutId: Int): Fragment(layoutId) {
 
-    fun showSnackbar(text: String){
+    fun showSnackbar(text: String) {
         Snackbar.make(
-            //we use the activity layout so its not destroyed when we pass to another fragment
             requireActivity().rootLayout,
             text,
             Snackbar.LENGTH_LONG

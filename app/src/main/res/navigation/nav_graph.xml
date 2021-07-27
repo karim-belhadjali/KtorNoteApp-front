@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/addEditNoteFragment"
         android:name="com.androiddevs.ktornoteapp.ui.addeditnote.AddEditNoteFragment"
-        android:label="AddEditNoteFragment" >
+        android:label="AddEditNoteFragment">
         <argument
             android:name="id"
             app:argType="string" />
@@ -15,7 +15,7 @@
     <fragment
         android:id="@+id/authFragment"
         android:name="com.androiddevs.ktornoteapp.ui.auth.AuthFragment"
-        android:label="AuthFragment" >
+        android:label="AuthFragment">
         <action
             android:id="@+id/action_authFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/noteDetailFragment"
         android:name="com.androiddevs.ktornoteapp.ui.notedetail.NoteDetailFragment"
-        android:label="NoteDetailFragment" >
+        android:label="NoteDetailFragment">
         <action
             android:id="@+id/action_noteDetailFragment_to_addEditNoteFragment"
             app:destination="@id/addEditNoteFragment" />
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.androiddevs.ktornoteapp.ui.notes.NotesFragment"
-        android:label="NotesFragment" >
+        android:label="NotesFragment">
         <action
             android:id="@+id/action_notesFragment_to_addEditNoteFragment"
             app:destination="@id/addEditNoteFragment" />
