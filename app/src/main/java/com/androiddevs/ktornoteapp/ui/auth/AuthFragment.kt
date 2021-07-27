@@ -19,6 +19,8 @@ import com.androiddevs.ktornoteapp.other.Constants.ACCOUNT_REGISTRED
 import com.androiddevs.ktornoteapp.other.Constants.COULDNT_REACH_INTERNET_ERROR
 import com.androiddevs.ktornoteapp.other.Constants.KEY_LOGGED_IN_EMAIL
 import com.androiddevs.ktornoteapp.other.Constants.KEY_PASSWORD
+import com.androiddevs.ktornoteapp.other.Constants.NO_EMAIL
+import com.androiddevs.ktornoteapp.other.Constants.NO_PASSWORD
 import com.androiddevs.ktornoteapp.other.Constants.UNKNOWN_ERROR
 import com.androiddevs.ktornoteapp.other.Status
 import com.androiddevs.ktornoteapp.other.checkForInternetConnection
@@ -46,6 +48,12 @@ class AuthFragment : BaseFragment(R.layout.fragment_auth) {
         super.onViewCreated(view, savedInstanceState)
 
         requireActivity().requestedOrientation = SCREEN_ORIENTATION_PORTRAIT
+
+        if (isLoggedIn()) {
+            authenticateAPI(curEmail ?: "", curPassword ?: "")
+            redirectLogin()
+        }
+
         subscribeToObservers()
 
         btnRegister.setOnClickListener {
@@ -70,6 +78,13 @@ class AuthFragment : BaseFragment(R.layout.fragment_auth) {
                 showSnackbar(COULDNT_REACH_INTERNET_ERROR)
             }
         }
+    }
+
+    private fun isLoggedIn(): Boolean {
+        curEmail = sharedPref.getString(KEY_LOGGED_IN_EMAIL, NO_EMAIL)
+        curPassword = sharedPref.getString(KEY_PASSWORD, NO_PASSWORD)
+
+        return curEmail != NO_EMAIL && curPassword != NO_PASSWORD
     }
 
     private fun redirectLogin() {

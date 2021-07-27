@@ -14,5 +14,7 @@ object Constants {
     const val UNKNOWN_ERROR= "The passwords do not match"
     const val KEY_LOGGED_IN_EMAIL= "KEY_LOGGED_IN_EMAIL"
     const val KEY_PASSWORD= "KEY_PASSWORD"
+    const val NO_EMAIL= "NO_EMAIL"
+    const val NO_PASSWORD= "NO_PASSWORD"
 
 }
