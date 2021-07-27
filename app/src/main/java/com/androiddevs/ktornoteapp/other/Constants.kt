@@ -6,4 +6,13 @@ object Constants {
     const val DATABASE_NAME= "note_database"
     const val BASE_URL= "http://10.0.2.2:8002"
     const val ENCRYPTED_SHARED_PREF_NAME= "enc_shared_pref"
+    const val COULDNT_REACH_INTERNET_ERROR= "Couldn't connect to the servers. Check your internet connection"
+    const val FILL_ALL_VALUES_ERROR= "Please fill out all the fields"
+    const val PASSWORDS_DO_NOT_MATCH= "The passwords do not match"
+    const val ACCOUNT_REGISTRED= "Successfully registered an account"
+    const val ACCOUNT_LOGGED_IN= "Successfully logged in"
+    const val UNKNOWN_ERROR= "The passwords do not match"
+    const val KEY_LOGGED_IN_EMAIL= "KEY_LOGGED_IN_EMAIL"
+    const val KEY_PASSWORD= "KEY_PASSWORD"
+
 }
