@@ -93,7 +93,6 @@ class AddEditNoteFragment : BaseFragment(R.layout.fragment_add_edit_note) {
         val drawable = ResourcesCompat.getDrawable(resources, R.drawable.circle_shape, null)
         drawable?.let {
             val wrappedDrawable = DrawableCompat.wrap(it)
-            println(colorString.trim())
             val color = Color.parseColor("#$colorString")
             DrawableCompat.setTint(wrappedDrawable, color)
             viewNoteColor.background = wrappedDrawable

@@ -7,6 +7,7 @@ import com.androiddevs.ktornoteapp.data.local.entites.Note
 import com.androiddevs.ktornoteapp.data.remote.NoteApi
 import com.androiddevs.ktornoteapp.data.remote.requests.AccountRequest
 import com.androiddevs.ktornoteapp.data.remote.requests.DeleteNoteRequest
+import com.androiddevs.ktornoteapp.data.remote.requests.OwnerRequest
 import com.androiddevs.ktornoteapp.other.Constants.COULDNT_REACH_INTERNET_ERROR
 import com.androiddevs.ktornoteapp.other.Ressource
 import com.androiddevs.ktornoteapp.other.checkForInternetConnection
@@ -103,7 +104,7 @@ class NoteRepository @Inject constructor(
         try {
             val response = noteApi.register(AccountRequest(email, password))
             if (response.isSuccessful && response.body()!!.successful) {
-                Ressource.success(response.body()?.message)
+                Ressource.success(response.body()?.message ?: response.message())
             } else {
                 Ressource.error(response.body()?.message ?: response.message(), null)
             }
@@ -116,7 +117,20 @@ class NoteRepository @Inject constructor(
         try {
             val response = noteApi.login(AccountRequest(email, password))
             if (response.isSuccessful && response.body()!!.successful) {
-                Ressource.success(response.body()?.message)
+                Ressource.success(response.body()?.message ?: response.message())
+            } else {
+                Ressource.error(response.body()?.message ?: response.message(), null)
+            }
+        } catch (e: Exception) {
+            Ressource.error(COULDNT_REACH_INTERNET_ERROR, null)
+        }
+    }
+
+    suspend fun addOwnerToNote(owner: String, noteID: String) = withContext(Dispatchers.IO) {
+        try {
+            val response = noteApi.addOwnerToNote(OwnerRequest(noteID, owner))
+            if (response.isSuccessful && response.body()!!.successful) {
+                Ressource.success(response.body()?.message ?: response.message())
             } else {
                 Ressource.error(response.body()?.message ?: response.message(), null)
             }

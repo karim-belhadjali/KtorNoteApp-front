@@ -87,7 +87,6 @@ class NotesFragment : BaseFragment(R.layout.fragment_notes) {
                 val result = event.peekContent()
                 when (result.status) {
                     Status.SUCCES -> {
-                        println("awedneha")
                         noteAdapter.notes = result.data!!
                         swipeRefreshLayout.isRefreshing = false
                     }

@@ -19,6 +19,7 @@ object Constants {
     const val FILL_ALL_VALUES_ERROR= "Please fill out all the fields"
     const val PASSWORDS_DO_NOT_MATCH= "The passwords do not match"
     const val ACCOUNT_REGISTRED= "Successfully registered an account"
+    const val OWNER_ADDED= "Successfully added owner to note "
     const val ACCOUNT_LOGGED_IN= "Successfully logged in"
     const val UNKNOWN_ERROR= "An unknown error has occured"
     const val NOTE_NOT_FOUND= "Note not found"
