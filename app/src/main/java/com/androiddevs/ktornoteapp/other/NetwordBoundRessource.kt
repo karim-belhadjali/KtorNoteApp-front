@@ -14,7 +14,6 @@ inline fun <ResultType, RequestType> networkBoundResource(
 ) = flow {
     emit(Ressource.loading(null))
     val data = query().first()
-
     val flow = if (shouldFetch(data)) {
         emit(Ressource.loading(data))
 

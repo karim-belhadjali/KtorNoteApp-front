@@ -1,11 +1,12 @@
 package com.androiddevs.ktornoteapp.repositories
 
 import android.app.Application
-import android.content.Context
 import com.androiddevs.ktornoteapp.data.local.NoteDao
+import com.androiddevs.ktornoteapp.data.local.entites.LocallyDeletedNoteID
 import com.androiddevs.ktornoteapp.data.local.entites.Note
 import com.androiddevs.ktornoteapp.data.remote.NoteApi
 import com.androiddevs.ktornoteapp.data.remote.requests.AccountRequest
+import com.androiddevs.ktornoteapp.data.remote.requests.DeleteNoteRequest
 import com.androiddevs.ktornoteapp.other.Constants.COULDNT_REACH_INTERNET_ERROR
 import com.androiddevs.ktornoteapp.other.Ressource
 import com.androiddevs.ktornoteapp.other.checkForInternetConnection
@@ -13,6 +14,7 @@ import com.androiddevs.ktornoteapp.other.networkBoundResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -35,8 +37,28 @@ class NoteRepository @Inject constructor(
         }
     }
 
+    fun observeNoteByID(noteID: String) = noteDao.observeNoteById(noteID)
+
     suspend fun insertNotes(notes: List<Note>) {
         notes.forEach { insertNote(it) }
+    }
+
+    suspend fun deleteNote(noteID: String) {
+        val response = try {
+            noteApi.deleteNote(DeleteNoteRequest(noteID))
+        } catch (e: Exception) {
+            null
+        }
+        noteDao.deleteNoteById(noteID)
+        if (response == null || !response.isSuccessful) {
+            noteDao.insertLocallyDeletedNoteId(LocallyDeletedNoteID(noteID))
+        } else {
+            deleteLocallyDeletedNoteID(noteID)
+        }
+    }
+
+    suspend fun deleteLocallyDeletedNoteID(deletedNoteID: String) {
+        noteDao.deleteLocallyDeletedNoteID(deletedNoteID)
     }
 
     suspend fun getNoteById(noteID: String): Note? {
@@ -49,10 +71,10 @@ class NoteRepository @Inject constructor(
                 noteDao.getAllNotes()
             },
             fetch = {
-                noteApi.getNotes()
+                syncNotes()
             },
             saveFetchResult = { response ->
-                response.body()?.let {
+                response?.body()?.let {
                     insertNotes(it)
                 }
             },
@@ -63,6 +85,19 @@ class NoteRepository @Inject constructor(
         )
     }
 
+
+    suspend fun syncNotes(): Response<List<Note>>? {
+        val locallyDeletedNoteIDs = noteDao.getAllLocallyDeletedNoteID()
+        locallyDeletedNoteIDs.forEach { id ->
+            deleteNote(id.deletedNoteID)
+        }
+        val unSyncedNotes = noteDao.getAllUnsyncedNotes()
+        unSyncedNotes.forEach { note ->
+            insertNote(note)
+        }
+        return noteApi.getNotes()
+
+    }
 
     suspend fun register(email: String, password: String) = withContext(Dispatchers.IO) {
         try {

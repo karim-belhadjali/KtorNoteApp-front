@@ -5,6 +5,11 @@ object Constants {
     // INTERCEPTOR CONSTANTS
     val IGNORE_AUTH_URLS= listOf("/login","/register")
 
+    //ENTITIES TABLE NAMES
+    const val NOTE_TABLE_NAME= "notes"
+    const val DELETED_NOTES_TABLE_NAME= "locally_deleted_note_ids"
+
+
     // ROOM AND RETROFIT CONSTANTS
     const val DATABASE_NAME= "note_database"
     const val BASE_URL= "http://10.0.2.2:8002"
@@ -17,6 +22,7 @@ object Constants {
     const val ACCOUNT_LOGGED_IN= "Successfully logged in"
     const val UNKNOWN_ERROR= "An unknown error has occured"
     const val NOTE_NOT_FOUND= "Note not found"
+    const val NOTE__WAS_SUCCESSFULLY_DELETED= "Note was successfully deleted"
 
     //SHARED PREF CONSTANTS
     const val ENCRYPTED_SHARED_PREF_NAME= "enc_shared_pref"

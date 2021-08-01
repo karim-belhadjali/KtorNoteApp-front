@@ -24,7 +24,7 @@ class AddEditNoteViewModel @ViewModelInject constructor(
         repository.insertNote(note)
     }
 
-    fun getNoteById(id: String) = GlobalScope.launch {
+    fun getNoteById(id: String) = viewModelScope.launch {
         _note.postValue(Event(Ressource.loading(null)))
         val note = repository.getNoteById(id)
 
