@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: io.noties.markwon:core:4.4.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/35051400fcdc335ca8f6714cc3ee3aea/jetified-core-4.4.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4490f777a65fc386b46c0b793fc47b71/jetified-core-4.4.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/35051400fcdc335ca8f6714cc3ee3aea/jetified-core-4.4.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/35051400fcdc335ca8f6714cc3ee3aea/jetified-core-4.4.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/35051400fcdc335ca8f6714cc3ee3aea/jetified-core-4.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4490f777a65fc386b46c0b793fc47b71/jetified-core-4.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4490f777a65fc386b46c0b793fc47b71/jetified-core-4.4.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4490f777a65fc386b46c0b793fc47b71/jetified-core-4.4.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/core/4.4.0/4a1868589f448223fe4535974ba41d1c220a0b39/core-4.4.0-javadoc.jar!/" />

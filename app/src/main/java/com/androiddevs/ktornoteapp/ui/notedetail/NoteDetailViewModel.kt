@@ -9,9 +9,12 @@ import com.androiddevs.ktornoteapp.other.Constants.FILL_ALL_VALUES_ERROR
 import com.androiddevs.ktornoteapp.other.Event
 import com.androiddevs.ktornoteapp.other.Ressource
 import com.androiddevs.ktornoteapp.repositories.NoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NoteDetailViewModel @ViewModelInject constructor(
+@HiltViewModel
+class NoteDetailViewModel @Inject constructor(
     private val repository: NoteRepository
 ): ViewModel() {
 

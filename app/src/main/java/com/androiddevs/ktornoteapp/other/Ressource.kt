@@ -1,6 +1,5 @@
 package com.androiddevs.ktornoteapp.other
 
-import javax.annotation.Resource
 
 data class Ressource<out T>(
     val status: Status,
