@@ -27,8 +27,8 @@ interface NoteDao {
     @Query("SELECT * FROM notes WHERE id= :noteId")
     suspend fun getNoteById(noteId: String): Note?
 
-    @Query("SELECT * FROM notes ORDER BY date DESC")
-    fun getAllNotes(): Flow<List<Note>>
+    @Query("SELECT * FROM notes WHERE owners Like :owner ORDER BY date DESC")
+    fun getAllNotes(owner:String): Flow<List<Note>>
 
     @Query("SELECT * FROM notes WHERE isSynced = 0")
     suspend fun getAllUnsyncedNotes(): List<Note>
@@ -37,7 +37,7 @@ interface NoteDao {
     suspend fun getAllLocallyDeletedNoteID(): List<LocallyDeletedNoteID>
 
     @Query("DELETE FROM locally_deleted_note_ids WHERE deletedNoteID = :deletedNoteID")
-    suspend fun deleteLocallyDeletedNoteID(deletedNoteID : String)
+    suspend fun deleteLocallyDeletedNoteID(deletedNoteID: String)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLocallyDeletedNoteId(locallyDeletedNoteID: LocallyDeletedNoteID)

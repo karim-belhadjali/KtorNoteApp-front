@@ -6,7 +6,7 @@ import java.lang.Exception
 
 
 inline fun <ResultType, RequestType> networkBoundResource(
-    crossinline query: () -> Flow<ResultType>,
+    crossinline query:  () -> Flow<ResultType>,
     crossinline fetch: suspend () -> RequestType,
     crossinline saveFetchResult: suspend (RequestType) -> Unit,
     crossinline onFetchedFailed: (Throwable) -> Unit = {},

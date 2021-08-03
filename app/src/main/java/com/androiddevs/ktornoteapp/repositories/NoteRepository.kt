@@ -4,6 +4,7 @@ import android.app.Application
 import com.androiddevs.ktornoteapp.data.local.NoteDao
 import com.androiddevs.ktornoteapp.data.local.entites.LocallyDeletedNoteID
 import com.androiddevs.ktornoteapp.data.local.entites.Note
+import com.androiddevs.ktornoteapp.data.remote.BasicAuthInterceptor
 import com.androiddevs.ktornoteapp.data.remote.NoteApi
 import com.androiddevs.ktornoteapp.data.remote.requests.AccountRequest
 import com.androiddevs.ktornoteapp.data.remote.requests.DeleteNoteRequest
@@ -14,15 +15,18 @@ import com.androiddevs.ktornoteapp.other.checkForInternetConnection
 import com.androiddevs.ktornoteapp.other.networkBoundResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.lang.Exception
 import javax.inject.Inject
 
+
 class NoteRepository @Inject constructor(
     private val noteDao: NoteDao,
     private val noteApi: NoteApi,
-    private val context: Application
+    private val context: Application,
+    private val basicAuthInterceptor: BasicAuthInterceptor
 ) {
 
     suspend fun insertNote(note: Note) {
@@ -66,10 +70,12 @@ class NoteRepository @Inject constructor(
         return noteDao.getNoteById(noteID)
     }
 
+
     fun getAllNotes(): Flow<Ressource<List<Note>>> {
+        val owner ="%${basicAuthInterceptor.email!!}%"
         return networkBoundResource(
             query = {
-                noteDao.getAllNotes()
+                noteDao.getAllNotes(owner)
             },
             fetch = {
                 syncNotes()
